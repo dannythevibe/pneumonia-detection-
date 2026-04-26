@@ -1,0 +1,99 @@
+[{"stream_name":"stderr","time":10.60646839,"data":"2026-04-22 06:26:00.485630: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered\n"}
+,{"stream_name":"stderr","time":10.920248381,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":10.920887946,"data":"E0000 00:00:1776839160.799539       7 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered\n"}
+,{"stream_name":"stderr","time":11.015417132,"data":"E0000 00:00:1776839160.894585       7 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered\n"}
+,{"stream_name":"stderr","time":11.730641717,"data":"W0000 00:00:1776839161.609811       7 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":11.730679547,"data":"W0000 00:00:1776839161.609924       7 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":11.730683961,"data":"W0000 00:00:1776839161.609933       7 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stderr","time":11.730687255,"data":"W0000 00:00:1776839161.609939       7 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.\n"}
+,{"stream_name":"stdout","time":38.497283406,"data":"TensorFlow Version: 2.19.0\n"}
+,{"stream_name":"stderr","time":38.499217525,"data":"2026-04-22 06:26:28.378527: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)\n"}
+,{"stream_name":"stdout","time":38.499320364,"data":"GPU Available: []\n"}
+,{"stream_name":"stdout","time":38.509059763,"data":"Detected Data Path: /kaggle/input/datasets/paultimothymooney/chest-xray-pneumonia/chest_xray\n"}
+,{"stream_name":"stdout","time":38.628310556,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":38.628351979,"data":"DATASET DISTRIBUTION\n"}
+,{"stream_name":"stdout","time":38.62835787,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":38.62836283,"data":"Train        1341         3875         5216       2.89:1\n"}
+,{"stream_name":"stdout","time":38.628367955,"data":"Val          8            8            16         1.00:1\n"}
+,{"stream_name":"stdout","time":38.628372955,"data":"Test         234          390          624        1.67:1\n"}
+,{"stream_name":"stdout","time":38.628377545,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":41.723564377,"data":"Found 5216 images belonging to 2 classes.\n"}
+,{"stream_name":"stdout","time":41.734508275,"data":"Found 16 images belonging to 2 classes.\n"}
+,{"stream_name":"stdout","time":42.614952958,"data":"Found 624 images belonging to 2 classes.\n"}
+,{"stream_name":"stdout","time":42.617146371,"data":"CONFIGURATION 1: Baseline\n"}
+,{"stream_name":"stdout","time":43.148351019,"data":"Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/vgg19/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5\n"}
+,{"stream_name":"stderr","time":75.185717269,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":75.185771519,"data":"  File \"/usr/lib/python3.12/urllib/request.py\", line 1344, in do_open\n"}
+,{"stream_name":"stderr","time":75.188872821,"data":"    h.request(req.get_method(), req.selector, req.data, headers,\n"}
+,{"stream_name":"stderr","time":75.188921028,"data":"  File \"/usr/lib/python3.12/http/client.py\", line 1338, in request\n"}
+,{"stream_name":"stderr","time":75.191039288,"data":"    self._send_request(method, url, body, headers, encode_chunked)\n"}
+,{"stream_name":"stderr","time":75.191071305,"data":"  File \"/usr/lib/python3.12/http/client.py\", line 1384, in _send_request\n"}
+,{"stream_name":"stderr","time":75.191584283,"data":"    self.endheaders(body, encode_chunked=encode_chunked)\n"}
+,{"stream_name":"stderr","time":75.191613164,"data":"  File \"/usr/lib/python3.12/http/client.py\", line 1333, in endheaders\n"}
+,{"stream_name":"stderr","time":75.192089299,"data":"    self._send_output(message_body, encode_chunked=encode_chunked)\n"}
+,{"stream_name":"stderr","time":75.192099668,"data":"  File \"/usr/lib/python3.12/http/client.py\", line 1093, in _send_output\n"}
+,{"stream_name":"stderr","time":75.192499846,"data":"    self.send(msg)\n"}
+,{"stream_name":"stderr","time":75.192510301,"data":"  File \"/usr/lib/python3.12/http/client.py\", line 1037, in send\n"}
+,{"stream_name":"stderr","time":75.192948946,"data":"    self.connect()\n"}
+,{"stream_name":"stderr","time":75.192964982,"data":"  File \"/usr/lib/python3.12/http/client.py\", line 1472, in connect\n"}
+,{"stream_name":"stderr","time":75.193385611,"data":"    super().connect()\n"}
+,{"stream_name":"stderr","time":75.193394373,"data":"  File \"/usr/lib/python3.12/http/client.py\", line 1003, in connect\n"}
+,{"stream_name":"stderr","time":75.193880208,"data":"    self.sock = self._create_connection(\n"}
+,{"stream_name":"stderr","time":75.193901129,"data":"                ^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.193906502,"data":"  File \"/usr/lib/python3.12/socket.py\", line 841, in create_connection\n"}
+,{"stream_name":"stderr","time":75.195988024,"data":"    for res in getaddrinfo(host, port, 0, SOCK_STREAM):\n"}
+,{"stream_name":"stderr","time":75.196099113,"data":"               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.196120677,"data":"  File \"/usr/lib/python3.12/socket.py\", line 978, in getaddrinfo\n"}
+,{"stream_name":"stderr","time":75.196612751,"data":"    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):\n"}
+,{"stream_name":"stderr","time":75.196743174,"data":"               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.196758235,"data":"socket.gaierror: [Errno -3] Temporary failure in name resolution\n"}
+,{"stream_name":"stderr","time":75.196764853,"data":"\n"}
+,{"stream_name":"stderr","time":75.196769564,"data":"During handling of the above exception, another exception occurred:\n"}
+,{"stream_name":"stderr","time":75.19677471,"data":"\n"}
+,{"stream_name":"stderr","time":75.19677859,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":75.196796847,"data":"  File \"/usr/local/lib/python3.12/dist-packages/keras/src/utils/file_utils.py\", line 311, in get_file\n"}
+,{"stream_name":"stderr","time":75.197119003,"data":"    urlretrieve(origin, download_target, DLProgbar())\n"}
+,{"stream_name":"stderr","time":75.197132592,"data":"  File \"/usr/lib/python3.12/urllib/request.py\", line 240, in urlretrieve\n"}
+,{"stream_name":"stderr","time":75.197394997,"data":"    with contextlib.closing(urlopen(url, data)) as fp:\n"}
+,{"stream_name":"stderr","time":75.197406802,"data":"                            ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.197436079,"data":"  File \"/usr/lib/python3.12/urllib/request.py\", line 215, in urlopen\n"}
+,{"stream_name":"stderr","time":75.197758778,"data":"    return opener.open(url, data, timeout)\n"}
+,{"stream_name":"stderr","time":75.197939338,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.197952759,"data":"  File \"/usr/lib/python3.12/urllib/request.py\", line 515, in open\n"}
+,{"stream_name":"stderr","time":75.198273803,"data":"    response = self._open(req, data)\n"}
+,{"stream_name":"stderr","time":75.198369324,"data":"               ^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.198384712,"data":"  File \"/usr/lib/python3.12/urllib/request.py\", line 532, in _open\n"}
+,{"stream_name":"stderr","time":75.198862918,"data":"    result = self._call_chain(self.handle_open, protocol, protocol +\n"}
+,{"stream_name":"stderr","time":75.198904798,"data":"             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.198920183,"data":"  File \"/usr/lib/python3.12/urllib/request.py\", line 492, in _call_chain\n"}
+,{"stream_name":"stderr","time":75.199224713,"data":"    result = func(*args)\n"}
+,{"stream_name":"stderr","time":75.199252083,"data":"             ^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.199284959,"data":"  File \"/usr/lib/python3.12/urllib/request.py\", line 1392, in https_open\n"}
+,{"stream_name":"stderr","time":75.199914929,"data":"    return self.do_open(http.client.HTTPSConnection, req,\n"}
+,{"stream_name":"stderr","time":75.199934718,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.19994012,"data":"  File \"/usr/lib/python3.12/urllib/request.py\", line 1347, in do_open\n"}
+,{"stream_name":"stderr","time":75.200332251,"data":"    raise URLError(err)\n"}
+,{"stream_name":"stderr","time":75.200390757,"data":"urllib.error.URLError: \u003curlopen error [Errno -3] Temporary failure in name resolution\u003e\n"}
+,{"stream_name":"stderr","time":75.200404758,"data":"\n"}
+,{"stream_name":"stderr","time":75.200410364,"data":"During handling of the above exception, another exception occurred:\n"}
+,{"stream_name":"stderr","time":75.200415503,"data":"\n"}
+,{"stream_name":"stderr","time":75.200419523,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":75.20042382,"data":"  File \"/kaggle/src/script.py\", line 158, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":75.200730835,"data":"    model_baseline = build_vgg19_model()\n"}
+,{"stream_name":"stderr","time":75.200749813,"data":"                     ^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.200894417,"data":"  File \"/kaggle/src/script.py\", line 133, in build_vgg19_model\n"}
+,{"stream_name":"stderr","time":75.200944011,"data":"    base_model = VGG19(weights='imagenet', include_top=False, input_shape=(IMG_SIZE, IMG_SIZE, 3))\n"}
+,{"stream_name":"stderr","time":75.201227661,"data":"                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.201246169,"data":"  File \"/usr/local/lib/python3.12/dist-packages/keras/src/applications/vgg19.py\", line 226, in VGG19\n"}
+,{"stream_name":"stderr","time":75.20148815,"data":"    weights_path = file_utils.get_file(\n"}
+,{"stream_name":"stderr","time":75.201517911,"data":"                   ^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":75.201570562,"data":"  File \"/usr/local/lib/python3.12/dist-packages/keras/src/utils/file_utils.py\", line 315, in get_file\n"}
+,{"stream_name":"stderr","time":75.201887124,"data":"    raise Exception(error_msg.format(origin, e.errno, e.reason))\n"}
+,{"stream_name":"stderr","time":75.20191461,"data":"Exception: URL fetch failure on https://storage.googleapis.com/tensorflow/keras-applications/vgg19/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5: None -- [Errno -3] Temporary failure in name resolution\n"}
+,{"stream_name":"stderr","time":79.039369538,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":79.039411393,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":79.356047298,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":79.35607766,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":80.336084937,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":81.424919825,"data":"[NbConvertApp] Writing 306782 bytes to __results__.html\n"}
+]
