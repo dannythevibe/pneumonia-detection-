@@ -2,8 +2,6 @@
 **/*.h5
 **/*.pth
 **/*.tflite
-**/*.mp4
-**/*.mov
 
 # Frontend
 node_modules/
