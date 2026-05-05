@@ -114,25 +114,39 @@ The frontend provides:
 
 ---
 
+## Deployment & Hosting
+
+The project is configured for automated deployment:
+
+- **Frontend**: [Vercel](https://vercel.com)
+- **Backend**: [Render](https://render.com)
+
+### 1. Backend Setup (Render)
+The backend is configured via `render.yaml`. 
+1. Connect your repo to Render.
+2. It will automatically detect the `backend` directory and deploy the API.
+3. On first startup, it will **automatically download** the 187MB model from the GitHub Release.
+
+### 2. Frontend Setup (Vercel)
+The frontend is configured via `frontend/vercel.json`.
+1. Connect your repo to Vercel.
+2. Set the **Root Directory** to `frontend`.
+3. Add an **Environment Variable**: `VITE_API_URL` = Your Render API URL.
+
+---
+
 ## Tech Stack
 
 | Component | Technology |
 |-----------|-----------|
 | Deep Learning | TensorFlow / Keras |
 | Model Architecture | VGG19 (Transfer Learning) |
-| Training Environment | Kaggle / Google Colab (Tesla T4 GPU) |
-| Backend API | Python Flask |
+| Backend API | Python Flask (Gunicorn) |
 | Frontend | React.js (Vite) |
-| Dataset | Paul Mooney Chest X-Ray Pneumonia |
-
----
-
-## Industry Context
-
-Existing AI-powered pneumonia detection systems have seen **limited deployment** in clinical settings, particularly in underserved regions. This project demonstrates the training and implementation of a practical Decision-Support Tool designed to bridge the gap in areas with limited access to radiological expertise.
+| Hosting | Vercel & Render |
 
 ---
 
 ## License
 
-This project is for academic and research purposes. The trained model should not be used as a standalone diagnostic tool in any clinical setting.
+This project is for academic and research purposes.

@@ -1,50 +1,33 @@
-# Hosting Guide: Pneumonia Detection Tool
+# Modern Hosting Guide (Vercel + Render)
 
-This project consists of two parts that require different hosting environments due to the machine learning model's size.
+The project is now optimized for automated hosting. The backend handles the large model file by downloading it on-demand from GitHub Releases.
 
-## 1. Frontend (React/Vite) → **Vercel**
+## 1. Backend (Flask API) → **Render**
 
-Vercel is the best choice for the frontend. 
-
-### Steps:
-1.  Go to [Vercel](https://vercel.com/) and log in with GitHub.
-2.  Click **"New Project"** and import your `pneumonia-detection-` repository.
-3.  **Crucial Step**: In the "Project Settings", find the **Root Directory** field and set it to `frontend`.
-4.  The "Framework Preset" should automatically detect **Vite**.
-5.  Click **Deploy**.
-
----
-
-## 2. Backend (Flask/TensorFlow) → **Render.com** (Recommended)
-
-Vercel has a 250MB limit for serverless functions. Since the VGG19 model is ~187MB and TensorFlow is ~500MB, the backend will **not** fit on Vercel. 
-
-**Render.com** is a great free/low-cost alternative that supports long-running Python servers.
+The backend is pre-configured with `render.yaml`.
 
 ### Steps:
 1.  Log in to [Render.com](https://render.com/).
-2.  Click **"New"** → **"Web Service"**.
-3.  Connect your GitHub repository.
-4.  Settings:
-    *   **Root Directory**: `backend`
-    *   **Runtime**: `Python 3`
-    *   **Build Command**: `pip install -r requirements.txt`
-    *   **Start Command**: `gunicorn app:app`
-5.  Select the **"Starter"** plan (Machine learning usually needs at least 512MB-1GB RAM).
+2.  Click **"New"** → **"Blueprint"** (or connect your repo).
+3.  Render will read `render.yaml` and create the `pneumonia-detection-api` service.
+4.  **Auto-Download**: The server will automatically fetch the `pneumonia_model.h5` (~187MB) from GitHub on its first run.
 
 ---
 
-## 3. Connecting them together
+## 2. Frontend (React/Vite) → **Vercel**
 
-Once your backend is live on Render, you will get a URL (e.g., `https://pneumonia-api.onrender.com`).
+### Steps:
+1.  Go to [Vercel](https://vercel.com/) and import your repository.
+2.  Set the **Root Directory** to `frontend`.
+3.  **Environment Variables**:
+    *   Add `VITE_API_URL` and set it to your Render service URL (e.g., `https://pneumonia-api.onrender.com`).
+4.  Click **Deploy**.
 
-1.  Open `frontend/src/App.jsx`.
-2.  Update the `fetch` URL in the `handleAnalyze` function:
-    ```javascript
-    // Change this line:
-    const response = await fetch('http://localhost:5001/predict', { ... })
-    
-    // To your new live URL:
-    const response = await fetch('https://your-api-name.onrender.com/predict', { ... })
-    ```
-3.  Commit and push this change to GitHub. Vercel will automatically redeploy the frontend.
+---
+
+## 3. GitHub Release (Important)
+
+The backend expects the model to be available at:
+`https://github.com/dannythevibe/pneumonia-detection-/releases/download/v1.0-model/pneumonia_model.h5`
+
+1. Ensure the model file is uploaded to the **v1.0-model** release on GitHub.
