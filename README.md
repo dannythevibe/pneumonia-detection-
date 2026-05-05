@@ -109,7 +109,7 @@ The frontend provides:
 2. Add the dataset: [chest-xray-pneumonia](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
 3. Enable **GPU** accelerator (Tesla T4)
 4. Copy the contents of `training/train_pneumonia_model.py` into notebook cells
-5. Run all cells
+5. Ensure the model file is uploaded as **pneumonia_model.zip** to the **v1.0-model** release on GitHub.
 6. Download `pneumonia_model.h5` and place it in `backend/models/`
 
 ---
@@ -125,7 +125,7 @@ The project is configured for automated deployment:
 The backend is configured via `render.yaml`. 
 1. Connect your repo to Render.
 2. It will automatically detect the `backend` directory and deploy the API.
-3. On first startup, it will **automatically download** the 187MB model from the GitHub Release.
+3. On first startup, it will **automatically download** the `pneumonia_model.zip` (~180MB) from the GitHub Release and extract it.
 
 ### 2. Frontend Setup (Vercel)
 The frontend is configured via `frontend/vercel.json`.

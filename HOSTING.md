@@ -10,7 +10,7 @@ The backend is pre-configured with `render.yaml`.
 1.  Log in to [Render.com](https://render.com/).
 2.  Click **"New"** → **"Blueprint"** (or connect your repo).
 3.  Render will read `render.yaml` and create the `pneumonia-detection-api` service.
-4.  **Auto-Download**: The server will automatically fetch the `pneumonia_model.h5` (~187MB) from GitHub on its first run.
+4.  **Auto-Download**: The server will automatically fetch the `pneumonia_model.zip` (~180MB) from GitHub on its first run and extract it.
 
 ---
 
@@ -28,6 +28,6 @@ The backend is pre-configured with `render.yaml`.
 ## 3. GitHub Release (Important)
 
 The backend expects the model to be available at:
-`https://github.com/dannythevibe/pneumonia-detection-/releases/download/v1.0-model/pneumonia_model.h5`
+`https://github.com/dannythevibe/pneumonia-detection-/releases/download/v1.0-model/pneumonia_model.zip`
 
-1. Ensure the model file is uploaded to the **v1.0-model** release on GitHub.
+1. Ensure the model file is uploaded as **pneumonia_model.zip** to the **v1.0-model** release on GitHub.
