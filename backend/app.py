@@ -36,22 +36,23 @@ model = None
 
 MODEL_URL = (
     "https://github.com/dannythevibe/pneumonia-detection-/releases/download"
-    "/v1.0-model/pneumonia_model.h5"
+    "/v1.0-model/pneumonia_model.zip"
 )
 
 def download_model():
     """Download the model from the GitHub Release if it isn't on disk yet."""
     import requests
+    import zipfile
     os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
-    temp_path = MODEL_PATH + ".tmp"
+    zip_path = MODEL_PATH + ".zip"
     
-    print(f"[INFO] Downloading model from GitHub Release (~187 MB)...")
+    print(f"[INFO] Downloading model zip from GitHub Release (~180 MB)...")
     try:
         with requests.get(MODEL_URL, stream=True, timeout=300) as r:
             r.raise_for_status()
             total = int(r.headers.get("content-length", 0))
             downloaded = 0
-            with open(temp_path, "wb") as f:
+            with open(zip_path, "wb") as f:
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
                     downloaded += len(chunk)
@@ -59,15 +60,16 @@ def download_model():
                         pct = downloaded / total * 100
                         print(f"\r[INFO] {pct:.1f}%", end="", flush=True)
         
-        # Rename temp file to actual path
-        if os.path.exists(MODEL_PATH):
-            os.remove(MODEL_PATH)
-        os.rename(temp_path, MODEL_PATH)
-        print("\n[INFO] Download complete and verified.")
+        print("\n[INFO] Extracting model...")
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            zip_ref.extractall(os.path.dirname(MODEL_PATH))
+        
+        os.remove(zip_path)
+        print("[INFO] Extraction complete.")
     except Exception as e:
         print(f"\n[ERROR] Download failed: {e}")
-        if os.path.exists(temp_path):
-            os.remove(temp_path)
+        if os.path.exists(zip_path):
+            os.remove(zip_path)
         raise e
 
 def load_model():
