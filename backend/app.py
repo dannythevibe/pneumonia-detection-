@@ -43,19 +43,32 @@ def download_model():
     """Download the model from the GitHub Release if it isn't on disk yet."""
     import requests
     os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
+    temp_path = MODEL_PATH + ".tmp"
+    
     print(f"[INFO] Downloading model from GitHub Release (~187 MB)...")
-    with requests.get(MODEL_URL, stream=True, timeout=300) as r:
-        r.raise_for_status()
-        total = int(r.headers.get("content-length", 0))
-        downloaded = 0
-        with open(MODEL_PATH, "wb") as f:
-            for chunk in r.iter_content(chunk_size=8192):
-                f.write(chunk)
-                downloaded += len(chunk)
-                if total:
-                    pct = downloaded / total * 100
-                    print(f"\r[INFO] {pct:.1f}%", end="", flush=True)
-    print("\n[INFO] Download complete.")
+    try:
+        with requests.get(MODEL_URL, stream=True, timeout=300) as r:
+            r.raise_for_status()
+            total = int(r.headers.get("content-length", 0))
+            downloaded = 0
+            with open(temp_path, "wb") as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)
+                    downloaded += len(chunk)
+                    if total:
+                        pct = downloaded / total * 100
+                        print(f"\r[INFO] {pct:.1f}%", end="", flush=True)
+        
+        # Rename temp file to actual path
+        if os.path.exists(MODEL_PATH):
+            os.remove(MODEL_PATH)
+        os.rename(temp_path, MODEL_PATH)
+        print("\n[INFO] Download complete and verified.")
+    except Exception as e:
+        print(f"\n[ERROR] Download failed: {e}")
+        if os.path.exists(temp_path):
+            os.remove(temp_path)
+        raise e
 
 def load_model():
     """Load the trained VGG19 model, downloading it first if necessary."""
