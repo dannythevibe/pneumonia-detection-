@@ -34,7 +34,8 @@ function App() {
     formData.append('image', selectedImage)
 
     try {
-      const response = await fetch('http://localhost:5001/predict', {
+      const API = import.meta.env.VITE_API_URL || 'http://localhost:5001'
+      const response = await fetch(`${API}/predict`, {
         method: 'POST',
         body: formData,
       })

@@ -31,12 +31,37 @@ IMG_SIZE = 224
 MODEL_PATH = os.path.join(os.path.dirname(__file__), 'models', 'pneumonia_model.h5')
 CONFIDENCE_THRESHOLD = 0.5
 
-# ─── Load Model ──────────────────────────────────────────────────────────────
+# ─── Model helpers ───────────────────────────────────────────────────────────
 model = None
 
+MODEL_URL = (
+    "https://github.com/dannythevibe/pneumonia-detection-/releases/download"
+    "/v1.0-model/pneumonia_model.h5"
+)
+
+def download_model():
+    """Download the model from the GitHub Release if it isn't on disk yet."""
+    import requests
+    os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
+    print(f"[INFO] Downloading model from GitHub Release (~187 MB)...")
+    with requests.get(MODEL_URL, stream=True, timeout=300) as r:
+        r.raise_for_status()
+        total = int(r.headers.get("content-length", 0))
+        downloaded = 0
+        with open(MODEL_PATH, "wb") as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
+                downloaded += len(chunk)
+                if total:
+                    pct = downloaded / total * 100
+                    print(f"\r[INFO] {pct:.1f}%", end="", flush=True)
+    print("\n[INFO] Download complete.")
+
 def load_model():
-    """Load the trained VGG19 model from disk."""
+    """Load the trained VGG19 model, downloading it first if necessary."""
     global model
+    if not os.path.exists(MODEL_PATH):
+        download_model()
     if os.path.exists(MODEL_PATH):
         print(f"[INFO] Loading model from: {MODEL_PATH}")
         model = tf.keras.models.load_model(MODEL_PATH)
@@ -44,7 +69,9 @@ def load_model():
     else:
         print(f"[WARNING] Model file not found at: {MODEL_PATH}")
         print("[WARNING] The /predict endpoint will use a simulated response.")
-        print("[WARNING] Train and export the model first using the training script.")
+
+# Eager load — runs under both  `python app.py`  and  gunicorn
+load_model()
 
 
 def preprocess_image(image_bytes):
