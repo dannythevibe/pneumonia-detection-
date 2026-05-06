@@ -16,6 +16,7 @@ export default function LandingPage({ onGetStarted }) {
           loop
           playsInline
           className="hero-video-element"
+          onEnded={() => videoRef.current.play()}
         />
         <div className="hero-overlay" />
       </div>

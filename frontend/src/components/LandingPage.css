@@ -9,7 +9,8 @@
 
 .hero-scroll-container {
   position: relative;
-  height: 400vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* ─── Video Background ────────────────────────────────────────────────── */
